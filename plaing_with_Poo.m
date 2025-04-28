@@ -1,0 +1,28 @@
+mu = 1; %Pa-s
+L = 0.05; % m
+H1 = 0.001; %m
+H2 = 0.00025; %m 
+Poo = 1E5; %Pa
+u_0 = 1; %m/s
+% rho cancels
+% w cancels
+
+m_dot = u_0*(H1*H2/(H2+H1)); % adjusted for the cancelation
+c_3 = Poo - 6*mu*L/(H1-H2)*(u_0/H1-m_dot/(H1^2)) ; % adjusted for the cancelation
+
+iter_len = 100;
+pressure = zeros(iter_len, 1);
+x = linspace(0, L, 100);
+
+for i=1:iter_len
+    pressure(i) = poo_jokes(x(i), mu, L, H1, H2, u_0, m_dot, c_3);
+end
+
+plot(x, pressure)
+
+function pressure = poo_jokes(x, mu, L, H1, H2, u_0, m_dot, c_3)
+    H = H1-x/L*(H1-H2);
+    pressure = 6*mu*L/(H1-H2)*(u_0/H-m_dot/(H^2))+c_3;
+end
+
+
