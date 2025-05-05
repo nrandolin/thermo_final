@@ -25,3 +25,15 @@ function pressure = poo_jokes(x, mu, L, H1, H2, u_0, m_dot, c_3)
     pressure = 6*mu*L/(H1-H2)*(u_0/H-m_dot/(H^2))+c_3;
 end
 
+%% WK7 PROBLEM 4 DESIGNING WITH Fins
+clear all
+Q_dot = 14;
+T_max = 62+273.15;
+Ta = 25+273.15;
+h = 24; 
+W = 0.025;
+L = 0.025;
+K = 167;
+n = 1;
+
+q_dot = W*n*sqrt(h*K*0.025/n)*(T_max-Ta)*tanh()
